@@ -6,6 +6,7 @@ import os
 #frontEnd connection code
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)  # Optional if called only from Node.js backend
@@ -50,4 +51,7 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    
+    port = int(os.environ.get("PORT", 5000))  # 5000 is fallback if not running on Render
+app.run(host='0.0.0.0', port=port)
+
