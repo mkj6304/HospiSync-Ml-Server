@@ -12,7 +12,7 @@ CORS(app)  # Optional if called only from Node.js backend
 
 #The ML model was giving error dur to hospital_api being in api directory so I changed its location
 # Load trained model
-model_path = '../model/hospital_recommender.pkl'
+model_path = 'hospital_recommender.pkl'
 if not os.path.exists(model_path):
     raise Exception("❌ Model file not found. Train the model first.")
 model = pickle.load(open(model_path, 'rb'))
